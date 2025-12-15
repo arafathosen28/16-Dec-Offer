@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>১৬ ডিসেম্বর বিজয় দিবস স্পেশাল অফার - ফ্রি ইন্টারনেট জিতুন</title>
+    <meta name="description" content="বিজয় দিবস উপলক্ষে বিশেষ উপহার। মাত্র ৩টি প্রশ্নের উত্তর দিয়ে জিতে নিন সর্বোচ্চ 100GB ফ্রি ইন্টারনেট!">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #006a4e 0%, #f42a41 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: #f0f0f0;
+            height: 6px;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #006a4e, #f42a41);
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        /* Content Area */
+        .content {
+            padding: 30px 25px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #006a4e 0%, #f42a41 100%);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            background: white;
+            color: #006a4e;
+            border: none;
+            padding: 16px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Step Sections */
+        .step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .step h2 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* Question Cards */
+        .question-card {
+            margin-bottom: 30px;
+        }
+
+        .question-text {
+            font-size: 20px;
+            font-weight: 600;
+            color: #006a4e;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            padding: 16px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .option:hover {
+            border-color: #006a4e;
+            background: #e8f5e9;
+            transform: translateX(5px);
+        }
+
+        .option.selected {
+            background: #006a4e;
+            color: white;
+            border-color: #006a4e;
+        }
+
+        .hint-text {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        .next-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #006a4e, #f42a41);
+            color: white;
+            border: none;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .next-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .next-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Congratulations Section */
+        .congrats {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .congrats-icon {
+            font-size: 80px;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .congrats h2 {
+            color: #006a4e;
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        .congrats p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Phone Input */
+        .input-group {
+            margin: 25px 0;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #006a4e;
+            box-shadow: 0 0 0 3px rgba(0, 106, 78, 0.1);
+        }
+
+        .error-text {
+            color: #f42a41;
+            font-size: 14px;
+            margin-top: 8px;
+            display: none;
+        }
+
+        .error-text.show {
+            display: block;
+        }
+
+        /* MB Selection Cards */
+        .mb-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .mb-card {
+            background: linear-gradient(135deg, #f8f9fa, #e8f5e9);
+            border: 3px solid #e0e0e0;
+            border-radius: 16px;
+            padding: 25px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mb-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .mb-card.selected {
+            background: linear-gradient(135deg, #006a4e, #00875f);
+            color: white;
+            border-color: #006a4e;
+        }
+
+        .mb-value {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .mb-label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Share Buttons */
+        .share-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .share-btn {
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+        }
+
+        .messenger-btn {
+            background: #0084FF;
+            color: white;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .share-confirm {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .checkbox-wrapper input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .checkbox-wrapper label {
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 22px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .question-text {
+                font-size: 18px;
+            }
+
+            .mb-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <!-- Hero Section -->
+        <div id="heroSection" class="hero">
+            <h1>১৬ ডিসেম্বর বিজয় দিবস উপলক্ষে বিশেষ উপহার 🎉</h1>
+            <p>মাত্র ৩টি প্রশ্নের উত্তর দিয়ে জিতে নিন সর্বোচ্চ 100GB ফ্রি ইন্টারনেট!</p>
+            <button class="btn" onclick="startQuiz()">এখনই শুরু করুন</button>
+        </div>
+
+        <!-- Questions Section -->
+        <div class="content">
+            <!-- Question 1 -->
+            <div id="step1" class="step">
+                <h2>প্রশ্ন ১/৩</h2>
+                <div class="question-card">
+                    <div class="question-text">বাংলাদেশ স্বাধীনতা লাভ করে কত সালে?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 1)">১৯৭১</div>
+                        <div class="option" onclick="selectOption(this, 1)">১৯৬৯</div>
+                        <div class="option" onclick="selectOption(this, 1)">১৯৭৫</div>
+                    </div>
+                </div>
+                <div class="hint-text">২১ ডিসেম্বর পর্যন্ত অফারটি চলবে</div>
+                <button class="next-btn" onclick="nextStep(2)" id="nextBtn1" disabled>পরবর্তী প্রশ্ন</button>
+            </div>
+
+            <!-- Question 2 -->
+            <div id="step2" class="step">
+                <h2>প্রশ্ন ২/৩</h2>
+                <div class="question-card">
+                    <div class="question-text">১৬ ডিসেম্বরকে কী বলা হয়?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 2)">বিজয় দিবস</div>
+                        <div class="option" onclick="selectOption(this, 2)">ভাষা দিবস</div>
+                        <div class="option" onclick="selectOption(this, 2)">স্বাধীনতা দিবস</div>
+                    </div>
+                </div>
+                <div class="hint-text">২১ ডিসেম্বর পর্যন্ত অফারটি চলবে</div>
+                <button class="next-btn" onclick="nextStep(3)" id="nextBtn2" disabled>পরবর্তী প্রশ্ন</button>
+            </div>
+
+            <!-- Question 3 -->
+            <div id="step3" class="step">
+                <h2>প্রশ্ন ৩/৩</h2>
+                <div class="question-card">
+                    <div class="question-text">বাংলাদেশের জাতীয় পতাকার রং কয়টি?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 3)">২টি</div>
+                        <div class="option" onclick="selectOption(this, 3)">৩টি</div>
+                        <div class="option" onclick="selectOption(this, 3)">৪টি</div>
+                    </div>
+                </div>
+                <div class="hint-text">২১ ডিসেম্বর পর্যন্ত অফারটি চলবে</div>
+                <button class="next-btn" onclick="nextStep(4)" id="nextBtn3" disabled>সম্পন্ন করুন</button>
+            </div>
+
+            <!-- Congratulations -->
+            <div id="step4" class="step">
+                <div class="congrats">
+                    <div class="congrats-icon">🎉</div>
+                    <h2>অভিনন্দন! আপনি সবগুলো প্রশ্ন সম্পন্ন করেছেন!</h2>
+                    <p>আপনার জন্য বিজয় দিবস উপলক্ষে ফ্রি ইন্টারনেট উপহার প্রস্তুত!</p>
+                </div>
+                <button class="next-btn" onclick="nextStep(5)">পরবর্তী ধাপ</button>
+            </div>
+
+            <!-- Phone Number -->
+            <div id="step5" class="step">
+                <h2>আপনার মোবাইল নাম্বার দিন</h2>
+                <div class="input-group">
+                    <label>মোবাইল নাম্বার</label>
+                    <input type="tel" id="phoneInput" placeholder="আপনার ১১ ডিজিট মোবাইল নাম্বার লিখুন" maxlength="11">
+                    <div class="error-text" id="phoneError">অনুগ্রহ করে সঠিক ১১ ডিজিট নাম্বার দিন</div>
+                </div>
+                <button class="next-btn" onclick="validatePhone()">পরবর্তী ধাপ</button>
+            </div>
+
+            <!-- MB Selection -->
+            <div id="step6" class="step">
+                <h2>আপনি কত GB নিতে চান?</h2>
+                <div class="mb-cards">
+                    <div class="mb-card" onclick="selectMB(this, '25GB')">
+                        <div class="mb-value">25GB</div>
+                        <div class="mb-label">ফ্রি ইন্টারনেট</div>
+                    </div>
+                    <div class="mb-card" onclick="selectMB(this, '50GB')">
+                        <div class="mb-value">50GB</div>
+                        <div class="mb-label">ফ্রি ইন্টারনেট</div>
+                    </div>
+                    <div class="mb-card" onclick="selectMB(this, '75GB')">
+                        <div class="mb-value">75GB</div>
+                        <div class="mb-label">ফ্রি ইন্টারনেট</div>
+                    </div>
+                    <div class="mb-card" onclick="selectMB(this, '100GB')">
+                        <div class="mb-value">100GB</div>
+                        <div class="mb-label">ফ্রি ইন্টারনেট</div>
+                    </div>
+                </div>
+                <button class="next-btn" onclick="nextStep(7)" id="mbNextBtn" disabled>পরবর্তী ধাপ</button>
+            </div>
+
+            <!-- Share Section -->
+            <div id="step7" class="step">
+                <h2>অফারটি চালু করতে ৫ জন বন্ধুকে শেয়ার করুন</h2>
+                <div class="share-buttons">
+                    <button class="share-btn whatsapp-btn" onclick="shareWhatsApp()">
+                        📱 WhatsApp এ শেয়ার করুন
+                    </button>
+                    <button class="share-btn messenger-btn" onclick="shareMessenger()">
+                        💬 Messenger এ শেয়ার করুন
+                    </button>
+                </div>
+                <div class="share-confirm">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="shareCheckbox" onchange="toggleConfirm()">
+                        <label for="shareCheckbox">আমি ৫ জনকে শেয়ার করেছি</label>
+                    </div>
+                </div>
+                <button class="next-btn" onclick="finalRedirect()" id="confirmBtn" disabled>Confirm & Get Free MB</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let currentStep = 0;
+        let selectedMB = '';
+        let phoneNumber = '';
+
+        // Start quiz
+        function startQuiz() {
+            document.getElementById('heroSection').style.display = 'none';
+            nextStep(1);
+        }
+
+        // Update progress bar
+        function updateProgress(step) {
+            const progress = (step / 7) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // Navigate to next step
+        function nextStep(step) {
+            // Hide all steps
+            const steps = document.querySelectorAll('.step');
+            steps.forEach(s => s.classList.remove('active'));
+
+            // Show current step
+            document.getElementById('step' + step).classList.add('active');
+            
+            // Update progress
+            updateProgress(step);
+            currentStep = step;
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Select option for questions
+        function selectOption(element, questionNum) {
+            // Remove selected class from siblings
+            const siblings = element.parentElement.children;
+            for (let sibling of siblings) {
+                sibling.classList.remove('selected');
+            }
+            
+            // Add selected class to clicked option
+            element.classList.add('selected');
+            
+            // Enable next button
+            document.getElementById('nextBtn' + questionNum).disabled = false;
+        }
+
+        // Validate phone number
+        function validatePhone() {
+            const phone = document.getElementById('phoneInput').value;
+            const error = document.getElementById('phoneError');
+            
+            // Check if exactly 11 digits
+            if (phone.length === 11 && /^\d+$/.test(phone)) {
+                phoneNumber = phone;
+                error.classList.remove('show');
+                nextStep(6);
+            } else {
+                error.classList.add('show');
+            }
+        }
+
+        // Select MB package
+        function selectMB(element, mb) {
+            // Remove selected class from all cards
+            const cards = document.querySelectorAll('.mb-card');
+            cards.forEach(card => card.classList.remove('selected'));
+            
+            // Add selected class to clicked card
+            element.classList.add('selected');
+            selectedMB = mb;
+            
+            // Enable next button
+            document.getElementById('mbNextBtn').disabled = false;
+        }
+
+        // Share to WhatsApp
+        function shareWhatsApp() {
+            const text = '১৬ ডিসেম্বর বিজয় দিবস স্পেশাল অফার! মাত্র ৩টি প্রশ্নের উত্তর দিয়ে জিতে নিন সর্বোচ্চ 100GB ফ্রি ইন্টারনেট!';
+            const url = window.location.href;
+            window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`, '_blank');
+        }
+
+        // Share to Messenger
+        function shareMessenger() {
+            const url = window.location.href;
+            window.open(`fb-messenger://share/?link=${encodeURIComponent(url)}`, '_blank');
+        }
+
+        // Toggle confirm button
+        function toggleConfirm() {
+            const checkbox = document.getElementById('shareCheckbox');
+            const confirmBtn = document.getElementById('confirmBtn');
+            confirmBtn.disabled = !checkbox.checked;
+        }
+
+        // Final redirect to CPA offer
+        function finalRedirect() {
+            // Replace with your actual CPA link
+            window.location.href = 'https://playabledownloads.com/FRE100GB';
+        }
+
+        // Prevent back button navigation
+        history.pushState(null, null, location.href);
+        window.onpopstate = function() {
+            history.go(1);
+        };
+    </script>
+</body>
+</html>
